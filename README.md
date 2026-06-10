@@ -6,43 +6,24 @@ A simple 2FA application with username/password login and support for:
 
 ## Prerequisites
 
-- Python 3.12+
-- Node.js 18+
-- MongoDB (running on localhost:27017)
+- Docker and Docker Compose
 
 ## Quick Start
 
-### 1. Start MongoDB
+### 1. Run the Application
 
 ```bash
-# Using Docker
-docker run -d -p 27017:27017 --name mongodb mongo:7
-
-# Or use a local MongoDB installation
-mongod
+docker compose up --build
 ```
 
-### 2. Start Backend
+This will start all services:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **MongoDB**: localhost:27017
 
-```bash
-cd backend
-python3.12 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
+### 2. Open Browser
 
-### 3. Start Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### 4. Open Browser
-
-Visit http://localhost:5173
+Visit http://localhost:3000
 
 ## Usage
 
@@ -85,5 +66,5 @@ two-factor/
 │   │   ├── stores/        # Pinia stores
 │   │   └── api/           # Axios config
 │   └── package.json
-└── docker-compose.yml # MongoDB container
+└── docker-compose.yml # Service orchestration
 ```
